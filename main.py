@@ -20,23 +20,24 @@ def play_lcm_game():
         correct_lcm = calculate_lcm(a, b)
         
         while True:
+            user_input = input("Введите пропущенное число (или 'q' для выхода): ").strip()
+            if user_input.lower() == 'q':
+                print(f"\nИгра окончена. Ваш результат: {correct_answers} из {total_questions}.")
+                return
+            
             try:
-                user_answer = input("Введите НОК этих чисел (или 'q' для выхода): ")
-                if user_answer.lower() == 'q':
-                    print(f"\nИгра окончена. Ваш результат: {correct_answers} правильных ответов из {total_questions}.")
-                    return
-                user_answer = int(user_answer)
+                user_answer = int(user_input)
                 break
             except ValueError:
-                print("Пожалуйста, введите целое число или 'q' для выхода.")
+                print("Ошибка! Введите целое число или 'q' для выхода.")
         
         total_questions += 1
         
-        if user_answer == correct_lcm:
-            print("Правильно! Молодец!\n")
+        if user_answer == correct_answer:
+            print("Правильно! Это действительно", correct_answer, "\n")
             correct_answers += 1
         else:
-            print(f"Неправильно. Ваш ответ: {user_answer}. Правильный ответ: {correct_lcm}\n")
+            print(f"Неправильно. Ваш ответ: {user_answer}. Правильный ответ: {correct_answer}\n")
             
 if __name__ == "__main__":
     play_lcm_game()
